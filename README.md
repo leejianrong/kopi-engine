@@ -1,4 +1,23 @@
-# kopi-engine
+# kopi-engine (retired)
+
+> **This repository is archived, and it was never built.** The engine lives inside
+> [kopicode](https://github.com/leejianrong/kopicode) at `internal/engine/`.
+>
+> Two of kopicode's decisions retired it.
+> [ADR-0002](https://github.com/leejianrong/kopicode/blob/main/docs/adr/0002-no-durable-runtime-own-journal.md)
+> dropped satay: a durable-execution journal records what the agent decided, not what
+> happened to the repo, so a forked session rewinds the conversation over a working
+> tree that never moved. kopicode owns a typed append-only event log instead, and git
+> shadow refs version the tree. That removed the main thing this repo existed to wrap.
+> [ADR-0003](https://github.com/leejianrong/kopicode/blob/main/docs/adr/0003-single-repo-internal-engine.md)
+> then folded the engine into the kopicode repo, because the second consumer the split
+> was made for (sotong) has not started, and the engine/surface boundary is a Go
+> `internal/` package boundary rather than a repo boundary.
+>
+> The two arguments below that were worth keeping have moved: the transcript lesson
+> into ADR-0002, and the two-products safety argument into the kopicode README.
+> Everything after this notice is the original text, kept as a record and no longer
+> accurate.
 
 The shared agent engine behind [kopicode](https://github.com/leejianrong/kopicode)
 (a terminal coding agent) and sotong (an always-on assistant, not yet started).
